@@ -195,7 +195,7 @@ def article_content(request):
 ```
 # suyun/blog/urls.py
 from django.urls import path, include
-from blog.views
+import blog.views
 
 urlpatterns = [
     path('content', blog.views.article_content)
