@@ -333,7 +333,7 @@ def get_detail_page(request):
     return render(request, 'blog/detail.html',
                 {
                     'curr_article': curr_article,
-                    'section_list': section_List    
+                    'section_list': section_list    
                 }
                 )
 ```
