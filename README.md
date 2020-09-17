@@ -1,16 +1,34 @@
 "# sunyun"
+## 环境说明
+|  标识   |  软件 |  版本  |  说明  |
+|  ----  | ----  | ----  | ----  |
+| 1  | system |  windows10  |  家庭中文版  |
+| 2  | python |  3.8.5  |  开发语言  |
+| 2  | django |  3.1.0  |  框架名称  | 
+| 2  | pycharm |  2002.2  |  IDE  | 
+| 2  | git |  2.25.1  |  代码管理工具  | 
+| 2  | PowerShell |  5.1.19041.1  |  执行命令工具  |  
 ## 创建 suyun 项目
     django-admin startproject suyun
 ## 创建博客应用
     django-admin startapp blog
 ## 运行项目
+    
     python manage.py runserver
+    
+###全局设置
+设置时区
+```
+# suyun/suyun/settings.py
+TIME_ZONE = 'Asia/Shanghai'
+```
 ## 开发阶段
 开发阶段包括:
 - 博客开发
 - 投票开发
 - 论坛开发
 ### 博客开发
+
 #### 模型创建
 * 标题
 * 摘要
@@ -23,10 +41,10 @@
 |  ----  | ----  | ----  | ----  |
 | 1  | article_id |  IntegerField  |  AutoField  |
 | 2  | title |  CharField  |  文章标题  |
-| 2  | brief |  TextField  |  文章摘要  | 
-| 2  | content |  TextField  |  文章内容  | 
-| 2  | title |  DateTimeField  |  发布日期  | 
-| 2  | title |  CharField  |  文章标题  |  
+| 3  | brief |  TextField  |  文章摘要  | 
+| 4  | content |  TextField  |  文章内容  | 
+| 5  | title |  DateTimeField  |  发布日期  | 
+| 6  | title |  CharField  |  文章标题  |  
 
 模型定义
 
@@ -36,7 +54,7 @@
         # 文章唯一ID
         article_id = models.AutoField(primary_key=True)
         # 文章标题
-        title = models.CharField()
+        title = models.CharField(max_length=200)
         # 文章摘要
         brief_content = models.TextField()
         # 文章内容
@@ -137,6 +155,14 @@ class Article(models.Model):
     ...    
     def __str__(self):
         return self.title
+```
+应用注册到项目
+```
+#suyun/suyun/settings.py
+INSTALLED_APPS = [
+    ...,
+    'blog',
+
 ```
 重新运行项目
 
