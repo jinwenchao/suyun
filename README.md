@@ -104,11 +104,16 @@
 创建管理员用户
     
         
-    python manage.py createsuperuser     
+    python manage.py createsuperuser
+         
     Username:shalter
+    
     Email address:
+    
     Password:Jx123!@#
+    
     Password (again):Jx123!@#
+    
     Superuser created successfully.
     
 #### 运行项目
