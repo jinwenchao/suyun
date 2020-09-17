@@ -73,7 +73,14 @@ TIME_ZONE = 'Asia/Shanghai'
 数据迁移
 
     python manage.py migrate
-    
+
+注册文章模型
+```
+#suyun/blog/admin.py
+from .models import Article
+
+admin.site.register(Article)
+```    
 验证模型
 >使用django shell 验证
 >
@@ -89,10 +96,10 @@ TIME_ZONE = 'Asia/Shanghai'
     
 2.创建一篇文章
     
-    >>>from blog.models imprt Article
+    >>>from blog.models import Article
     >>>art = Article()
     >>>art.title = 'Test Django Shell'
-    >>>art.brief = 'Test Django Shell brief_content'
+    >>>art.brief_content = 'Test Django Shell brief_content'
     >>>art.content = 'Test Django Shell Main content'
     >>>print(art)
     >>>Article object(None)
@@ -100,12 +107,14 @@ TIME_ZONE = 'Asia/Shanghai'
     >>>
     >>>articles = Article.objects.all()
     >>>article = articles[0]
-    >>>print(article.title
+    >>>print(article.title)
     Test Django Shell
     >>>print(article.brief_content)
     Test Django Shell brief_content
     >>>print(article.content)
     Test Django Shell Main content
+    
+    >>>exit()
 
 #### 管理台页面
 >Django后台管理工具
@@ -122,16 +131,11 @@ TIME_ZONE = 'Asia/Shanghai'
 创建管理员用户
     
         
-    python manage.py createsuperuser
-         
-    Username:shalter
-    
-    Email address:
-    
-    Password:Jx123!@#
-    
-    Password (again):Jx123!@#
-    
+    python manage.py createsuperuser         
+    Username:shalter    
+    Email address:    
+    Password:Jx123!@#    
+    Password (again):Jx123!@#    
     Superuser created successfully.
     
 #### 运行项目
