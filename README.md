@@ -245,7 +245,7 @@ http://127.0.0.1:8080/blog/content
       <div class="body-main">
         {% for article in article_list %}
         <div>
-          <h2>{{ article.title }}</h2>
+          <h2><a href="/blog/detail/{{article.article_id}}">{{ article.title }}</a></h2>
           <p>
             {{ article.brief_content }}
           </p>
@@ -257,7 +257,7 @@ http://127.0.0.1:8080/blog/content
       <div>
         <h2>最新文章</h2>
         {% for article in article_list %}
-        <h4><a href="#">{{ article.title }}</a></h4>
+        <h4><a href="/blog/detail/{{article.article_id}}">{{ article.title }}</a></h4>
         {% endfor%}
       </div>
     </div>
@@ -381,9 +381,25 @@ def get_detail_page(request, article_id):
                 }
                 )
 ```    
-
+在suyun/blog/templates/blog/index.html中修改如下
+```
+<h2><a href="/blog/detail/{{article.article_id}}">{{ article.title }}</a></h2>
+<h4><a href="/blog/detail/{{article.article_id}}">{{ article.title }}</a></h4>
+```
 ##### 本页向上下页面跳转
-
+```
+#suyun/blog/templates/blog/detail.html
+...
+<div>
+    <nav aria-label="...">
+      <ul class="pager">
+        <li><a href="#">Previous</a></li>
+        <li><a href="#">Next</a></li>
+      </ul>
+    </nav>
+</div>
+</body>
+```
 #### 分页功能
 
 #### 最近文件列表
