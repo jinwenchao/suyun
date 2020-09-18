@@ -387,18 +387,58 @@ def get_detail_page(request, article_id):
 <h4><a href="/blog/detail/{{article.article_id}}">{{ article.title }}</a></h4>
 ```
 ##### 本页向上下页面跳转
+页面按钮元素添加
 ```
 #suyun/blog/templates/blog/detail.html
 ...
 <div>
     <nav aria-label="...">
       <ul class="pager">
-        <li><a href="#">Previous</a></li>
-        <li><a href="#">Next</a></li>
+        <li><a href="/blog/detail/{{ previous_article.article_id }}">上一篇: {{ previous_article.title }}</a></li>
+        <li><a href="/blog/detail/{{ net_article.article_id }}">下一篇: {{ next_article.title }}</a></li>
       </ul>
     </nav>
 </div>
 </body>
+```
+
+数据传递
+
+通过当前文章的下标去查找上一篇和下一篇
+```
+#suyun/blog/views.py
+def get_detail_page(request, article_id):
+    all_article = Article.objects.all()
+    curr_article = None
+    previous_index = 0
+    next_index = 0
+    previous_article = None
+    next_article = None
+    for index,article in enumerate(all_article):
+        if index == 0:
+            previous_index = 0
+            next_index = index + 1
+        elif index == len(all_article) - 1:
+            previous_index = index -1
+            next_index = index
+        else:
+            previous_index = index - 1
+            next_index = index + 1
+
+        if article.article_id == article_id:
+            curr_article = article
+            previous_article = all_article[previous_index]
+            next_article = all_article[next_index]
+            break
+    section_list = curr_article.content.split('\n')
+    return render(request, 'blog/detail.html',
+                {
+                    'curr_article': curr_article,
+                    'section_list': section_list,
+                    'previous_article': previous_index,
+                    'next_article': next_article
+                }
+                )
 ```
 #### 分页功能
 
