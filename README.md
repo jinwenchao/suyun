@@ -356,7 +356,31 @@ urlpatterns = [
 #### 页面跳转
 页面调整包括首页到详情页的跳转和本页向上一篇和下一遍文章的跳转两部分的跳转。
 ##### 首页详情页跳转
-
+修改路由
+```
+#suyun/blog/urls.py
+path('detail', blog.views.get_detail_page),
+调整为:
+path('detail/<int:article_id>', blog.views.get_detail_page),
+```
+改造get_detail_page()函数
+```
+#suyun/blog/views.py
+def get_detail_page(request, article_id):
+    all_article = Article.objects.all()
+    curr_article = None
+    for article in all_article:
+      if article.article_id == article_id:
+        curr_article = article
+        break
+    section_list = curr_article.content.split('\n')
+    return render(request, 'blog/detail.html',
+                {
+                    'curr_article': curr_article,
+                    'section_list': section_list    
+                }
+                )
+```    
 
 ##### 本页向上下页面跳转
 
