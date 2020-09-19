@@ -470,6 +470,87 @@ def get_detail_page(request, article_id):
   </div>
 </div>
 ```
-#### 最近文件列表
 
+获取页码
+```hgignore
+# suyun/blog/views
+def get_index_page(request):
+    page = request.GET.get('page')
+    if page:
+        page = int(page)
+    else:
+        page = 1
+    print('page param:',paeg)
+```
+
+导入分页模块
+```
+#suyun/blog/views
+from django.core.paginator import Paginator
+
+def get_index_page(request):
+    ...
+    all_article = Article.objects.all()    
+    paginator = Paginator(all_article,3)
+    page_num = paginator.num_pages
+    print('page num:',page_num)
+    page_article_list = paginator.page(page)
+    if page_article_list.has_next():
+        next_page = page + 1
+    else:
+        next_page = page
+    if page_article_list.has_previous():
+        previous_page = page - 1
+    else:
+        previous_page = page
+
+    return render(request, 'blog/index.html',
+                {
+                    'article_list': page_article_list
+                    'page_num': range(1, page_num + 1)
+                    'curr_page': page,
+                    'next_page':next_page,
+                    'previous_page':previous_page
+                }
+                )
+```
+
+修改页面
+```
+#suyun/blog/templates/blog/index.html
+      <li>
+          <a href="/blog/index?page={{ previous_page }}" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+      </li>
+      {% for num in page_num %}
+      <li><a href="/blog/index?page={{num}}">{{ num }}</a></li>
+      {% endfor %}
+      <li>
+        <a href="/blog/index?page={{ next_page }}" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+        
+```
+#### 最近文件列表
+倒叙排列最近的5篇文章
+
+```
+#suyun/blog/views.py
+all_article = Article.objects.all()
+top5_article_list = Article.objects.order_by('-publish_date')[:5]
+
+    return render(request, 'blog/index.html',
+                {
+                    'article_list': page_article_list
+                    'page_num': range(1, page_num + 1)
+                    'curr_page': page,
+                    'next_page':next_page,
+                    'previous_page':previous_page,
+                    'top5_article_list': top5_article_list
+                }
+                )
+```
 #### 评论
+暂无开发该功能
