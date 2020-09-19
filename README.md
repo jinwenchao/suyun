@@ -4,10 +4,10 @@
 |  ----  | ----  | ----  | ----  |
 | 1  | system |  windows10  |  家庭中文版  |
 | 2  | python |  3.8.5  |  开发语言  |
-| 2  | django |  3.1.0  |  框架名称  | 
-| 2  | pycharm |  2002.2  |  IDE  | 
-| 2  | git |  2.25.1  |  代码管理工具  | 
-| 2  | PowerShell |  5.1.19041.1  |  执行命令工具  |  
+| 3  | django |  3.1.0  |  框架名称  | 
+| 4  | pycharm |  2002.2  |  IDE  | 
+| 5  | git |  2.25.1  |  代码管理工具  | 
+| 6  | PowerShell |  5.1.19041.1  |  执行命令工具  |  
 ## 创建 suyun 项目
     django-admin startproject suyun
 ## 创建博客应用
