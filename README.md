@@ -395,7 +395,7 @@ def get_detail_page(request, article_id):
     <nav aria-label="...">
       <ul class="pager">
         <li><a href="/blog/detail/{{ previous_article.article_id }}">上一篇: {{ previous_article.title }}</a></li>
-        <li><a href="/blog/detail/{{ net_article.article_id }}">下一篇: {{ next_article.title }}</a></li>
+        <li><a href="/blog/detail/{{ next_article.article_id }}">下一篇: {{ next_article.title }}</a></li>
       </ul>
     </nav>
 </div>
@@ -435,13 +435,41 @@ def get_detail_page(request, article_id):
                 {
                     'curr_article': curr_article,
                     'section_list': section_list,
-                    'previous_article': previous_index,
+                    'previous_article': previous_article,
                     'next_article': next_article
                 }
                 )
 ```
 #### 分页功能
-
+```
+#suyun/blog/templates/blog/index.html
+...
+    {% endfor %}
+</div>
+<div class="body-footer>
+  <div class="col-md-4 col-md-offset -3">
+    <nav aria-label="Page navigation">
+      <ul class="pagination">
+        <li>
+          <a href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li>
+          <a href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+```
 #### 最近文件列表
 
 #### 评论

@@ -25,6 +25,7 @@
       <div>
         <nav aria-label="...">
           <ul class="pager">
+            <!-- 待优化,设置如果是第一篇文章，上一篇按钮为灰色，如果是最后一篇文章，下一篇按钮为灰色 -->
             <li><a href="/blog/detail/{{ previous_article.article_id }}">上一篇: {{ previous_article.title }}</a></li>
             <li><a href="/blog/detail/{{ next_article.article_id }}">下一篇: {{ next_article.title }}</a></li>
           </ul>
