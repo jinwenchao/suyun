@@ -1,10 +1,309 @@
 <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>员工新增</tit<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>员工管理</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- 页面自定义样式 -->
+    <style type="text/css">
+        html {
+          position: relative;
+          min-height: 100%;
+        }
+        body {
+          /* Margin bottom by footer height */
+          margin-bottom: 60px;
+        }
+        .footer {
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          /* Set the fixed height of the footer here */
+          height: 60px;
+          background-color: #f5f5f5;
+        }
+
+        body > .container {
+          padding: 60px 15px 0;
+        }
+        .container .text-muted {
+          margin: 20px 0;
+        }
+
+        .footer > .container {
+          padding-right: 15px;
+          padding-left: 15px;
+        }
+
+        code {
+          font-size: 80%;
+        }
+
+        label {
+            display:block;
+            text-align:right
+        }
+
+        button {
+            margin:10px
+        }
+    </style>
 </head>
 <body>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">好活集团人员登记系统</a>
+        </div>
+      </div>
+    </nav>
 
+    <!-- Begin page content -->
+    <div class="container">
+      <div class="page-header">
+        <h4>用户新增</h4>
+
+      </div>
+
+      <div class="page-body">
+        <div class="area-search">
+
+        </div>
+
+        <div class="area-display">
+            <form class="form" role="form">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2 id="label_name">
+                            <label style="display:block;text-align:right">姓名</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="email" class="form-control" id="inputEmail3" placeholder="输入员工姓名">
+                        </div>
+                        <div class="col-md-2 id="label_name">
+                            <label style="display:block;text-align:right">性别</label>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <label class="radio-inline">
+                                    <input type="radio" name="optionsRadiosinline" id="optionsRadios3" value="option1" checked> 男 性
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="optionsRadiosinline" id="optionsRadios4" value="option2">女 性
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2" id="label_name">
+                            <label style="display:block;text-align:right">电话号码</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="email" class="form-control" id="inputEmail3" placeholder="输入手机号码">
+                        </div>
+                        <div class="col-md-2 id="label_name">
+                            <label style="display:block;text-align:right">银行卡号</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="email" class="form-control" id="inputEmail3" placeholder="输入银行卡号码">
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2 id=" id="label_name">
+                            <label style="display:block;text-align:right">身份证号</label>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="email" class="form-control" id="inputEmail3" placeholder="输入员工身份证号码">
+                        </div>
+                        <div class="col-md-2 id=" id="label_name">
+                            <label style="display:block;text-align:right">职务状态</label>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <label class="radio-inline">
+                                    <input type="radio" name="optionsRadiosinline" id="optionsRadios3" value="option1" checked> 在 职
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="optionsRadiosinline" id="optionsRadios4" value="option2">离 职
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2 id=" id="label_name">
+                            <label style="display:block;text-align:right">笔记本电脑型号</label>
+                        </div>
+                        <div class="col-md-4">
+                            <select class="form-control">
+                                <option>联想 Thinkpad T490</option>
+                                <option>联想 Thinkpad E490</option>
+                                <option>苹果 Macbook Pro</option>
+                                <option>MateBook D 14</option>
+                                <option>MateBook D 13</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2 id=" id="label_name">
+                            <label style="display:block;text-align:right">显示器型号</label>
+                        </div>
+                        <div class="col-md-4">
+                            <select class="form-control">
+                                <option>戴尔（DELL）U2417H 23.8英寸 IPS</option>
+                                <option>惠普（HP）24F 23.8英寸 IPS </option>
+                                <option>飞利浦 PHILIPS 23.8英寸</option>
+                            </select>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2 id=" id="label_name">
+                            <label style="display:block;text-align:right">员工归属</label>
+                        </div>
+                        <div class="col-md-4">
+                            <select class="form-control">
+                                <option>好活(昆山)网络科技有限公司北京分公司</option>
+                                <option>联想 Thinkpad E490</option>
+                                <option>苹果 Macbook Pro</option>
+                                <option>MateBook D 14</option>
+                                <option>MateBook D 13</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 id=" id="label_name">
+                            <select class="form-control">
+                                <option>质控部</option>
+                                <option>联想 Thinkpad E490</option>
+                                <option>苹果 Macbook Pro</option>
+                                <option>MateBook D 14</option>
+                                <option>MateBook D 13</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-control">
+                                <option>运维工程师</option>
+                                <option>测试工程师</option>
+                                <option>苹果 Macbook Pro</option>
+                                <option>MateBook D 14</option>
+                                <option>MateBook D 13</option>
+                            </select>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2 id="label_name">
+                            <label style="display:block;text-align:right">办公软件</label>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> 企业邮箱
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> 企业微信
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> 金蝶云
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> 合同系统
+                                </label>
+                            </div>
+
+                        </div>
+                        <div class="col-md-2">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> 纷享销客
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2">
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-10" style="margin:10px">
+                        <!-- 标准的按钮 -->
+                        <button type="button" class="btn btn-default">默认按钮</button>
+                        <!-- 提供额外的视觉效果，标识一组按钮中的原始动作 -->
+                        <button type="button" class="btn btn-primary">原始按钮</button>
+                        <!-- 表示一个成功的或积极的动作 -->
+                        <button type="button" class="btn btn-success">成功按钮</button>
+                        <!-- 信息警告消息的上下文按钮 -->
+                        <button type="button" class="btn btn-info">信息按钮</button>
+                    </div>
+                    <hr>
+                </div>
+            </form>
+
+        </div>
+
+      </div>
+        <!--<p class="lead">本页面为日常工作中的一个集团账号的添加页面汇总入口信息界面<code>padding-top: 60px;</code> on the <code>body &gt; .container</code>.</p>-->
+      <!--<p>Back to <a href="../sticky-footer">the default sticky footer</a> minus the navbar.</p>-->
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">人员管理系统说明---本页面为日常工作中的一个集团账号的添加页面汇总入口信息界面.</p>
+      </div>
+    </footer>
+
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
