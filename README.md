@@ -10,17 +10,21 @@
 | 6  | PowerShell |  5.1.19041.1  |  执行命令工具  |  
 ## 创建 suyun 项目
     django-admin startproject suyun
-## 创建博客应用
+## 创建应用
     django-admin startapp blog
+    django-admin startapp employee
+    django-admin startapp pools
 ## 运行项目
     
     python manage.py runserver
     
 ###全局设置
-设置时区
+语言设置时区
 ```
 # suyun/suyun/settings.py
+LANGUAGE_CODE = 'zh-hans'
 TIME_ZONE = 'Asia/Shanghai'
+
 ```
 ## 开发阶段
 开发阶段包括:
@@ -28,6 +32,67 @@ TIME_ZONE = 'Asia/Shanghai'
 - 投票系统
 - 论坛系统
 - 员工信息
+
+### 员工系统
+### 员工系统
+#### 模型创建
+
+
+|  标识   | 字段  |  类型  |  说明  |
+|  ----  | ----  | ----  | ----  |
+| 1  | emp_id |  IntegerField  |  AutoField  |
+| 2  | emp_name |  CharField  |  员工姓名  |
+| 3  | phone_number |  CharField  |  手机号码-11  | 
+| 4  | emp_sex |  BooleanField  |  性别  | 
+| 5  | title |  DateTimeField  |  发布日期  | 
+| 6  | title |  CharField  |  文章标题  | 
+
+```hgignore
+# suyun/employee/models.py
+class Employee(models.Model):
+    # 员工编号
+    emp_id = models.AutoField(primary_key=True)
+    # 员工姓名
+    emp_name = models.CharField(max_length=20)
+    # 性别
+    emp_sex = models.BooleanField(default=True)
+    # 头像
+    emp_icon = models.CharField(max_length=60,default='default.jpg')
+    # 手机号码
+    phone_number = models.CharField(max_length=11)
+    # 银行卡号码
+    bank_card = models.CharField(max_length=16)
+    # 身份证号码
+    id_card = models.CharField(max_length=18)
+    # 员工分公司
+
+    # 员工部门
+
+    # 员工职务
+
+    # 电脑型号
+    computer_type = models.ModelChoiceField(queryset=CATEGORY, empty_label='请选择电脑型号')
+    # 显示器型号
+    desplay_type = models.ModelChoiceField(queryset=CATEGORY, empty_label='请选择显示器型号')
+    # 办公软件 薪人薪事-企业微信-企业邮箱-金蝶云-合同系统-纷享销客-好活平台-quickBI
+
+    # 新增时间
+    create_time = models.DateTimeField(auto_now_add=True)
+    # 修改时间  
+    modify_time = models.DateTimeField(auto_now=True)
+    # 职务状态 在职-离职
+    job_status = models.BooleanField(default=True)
+    class Meta:
+        db_table = 'emp_user'
+
+class EmpBlongInfo(models.Model):
+    # 公司-部门-职务
+    empblong = models.CharField(max_length=200,null=True,blank=True,verbose_name="员工所属")
+    pid = models.ForeignKey('self', null=True, blank=True,verbose_name="自关联")
+    
+    def __str__(self):
+        return self.empblong
+```
 ### 博客开发
 
 #### 模型创建
@@ -554,3 +619,5 @@ top5_article_list = Article.objects.order_by('-publish_date')[:5]
 ```
 #### 评论
 暂无开发该功能
+
+
